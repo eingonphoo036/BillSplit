@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillSplit.Views.ProfilePage"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             x:DataType="vm:ProfileViewModel"
+             BackgroundColor="White"
+             Title="Profile">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <!-- Logo -->
+            <Image Source="logo.png"
+                   HeightRequest="80"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="User Profile"
+                   FontSize="28"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Border BackgroundColor="#F2F2F2" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Username" FontAttributes="Bold" TextColor="Gray"/>
+                    <Label Text="{Binding Username}" FontSize="16" TextColor="Black"/>
+
+                    <Label Text="Email" FontAttributes="Bold" TextColor="Gray" Margin="0,10,0,0"/>
+                    <Label Text="{Binding Email}" FontSize="16" TextColor="Black"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="🏠 Back to Home"
+                    Command="{Binding NavigateHomeCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

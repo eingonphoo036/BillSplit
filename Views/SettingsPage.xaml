@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillSplit.Views.SettingsPage"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             x:DataType="vm:SettingsViewModel"
+             BackgroundColor="White"
+             Title="Settings">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <!-- Logo -->
+            <Image Source="logo.png"
+                   HeightRequest="80"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Settings"
+                   FontSize="28"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Border BackgroundColor="#F2F2F2" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding Username}" />
+                    <Label Text="{Binding Email}" />
+                    <Entry Text="{Binding NewPassword}" Placeholder="New Password" IsPassword="True" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="🔒 Change Password"
+                    Command="{Binding ChangePasswordCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45"/>
+
+            <Button Text="🚪 Log Out"
+                    Command="{Binding LogoutCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45"/>
+
+            <Button Text="🏠 Back to Home"
+                    Command="{Binding NavigateHomeCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

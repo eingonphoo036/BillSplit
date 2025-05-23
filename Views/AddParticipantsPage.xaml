@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             xmlns:model="clr-namespace:BillSplit.Models"
+             x:Class="BillSplit.Views.AddParticipantsPage"
+             x:DataType="vm:AddParticipantViewModel"
+             Title="Add Participants"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+            <Label Text="Add Participants"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <!-- Email Entry with Frame -->
+            <Frame BorderColor="Gray"
+                   BackgroundColor="#F0F0F0"
+                   Padding="10"
+                   CornerRadius="5"
+                   Margin="10">
+                <Entry Placeholder="Friend's Email"
+                       Text="{Binding Email}"
+                       PlaceholderColor="Gray"
+                       BackgroundColor="Transparent"
+                       TextColor="Black"
+                       HeightRequest="50"/>
+            </Frame>
+
+            <!-- Name Entry with Frame -->
+            <Frame BorderColor="Gray"
+                   BackgroundColor="#F0F0F0"
+                   Padding="10"
+                   CornerRadius="5"
+                   Margin="10">
+                <Entry Placeholder="Friend's Name"
+                       Text="{Binding Name}"
+                       PlaceholderColor="Gray"
+                       BackgroundColor="Transparent"
+                       TextColor="Black"
+                       HeightRequest="50"/>
+            </Frame>
+
+            <Button Text="Add Friend"
+                    Command="{Binding AddFriendCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    HeightRequest="50"
+                    CornerRadius="10" />
+            <Button Text="🔄 Refresh Friends"
+                    Command="{Binding LoadFriendsCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45" />
+
+            <Label Text="Friends List"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   TextColor="Black"
+                   Margin="0,20,0,0" />
+
+            <CollectionView ItemsSource="{Binding Friends}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Friend">
+                        <Frame BorderColor="Black"
+                               BackgroundColor="White"
+                               Padding="10"
+                               CornerRadius="5"
+                               Margin="5">
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="Medium" TextColor="Black" />
+                                <Label Text="{Binding Email}" FontSize="Small" TextColor="Gray" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="🏠 Back to Home"
+                    Command="{Binding NavigateHomeCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

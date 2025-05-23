@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:BillSplit.ViewModels"
+    x:Class="BillSplit.Views.HomePage"
+    x:DataType="vm:HomeViewModel"
+    BackgroundColor="White"
+    Title="Home">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Profile" Command="{Binding NavigateToProfileCommand}" />
+        <ToolbarItem Text="Settings" Command="{Binding NavigateToSettingsCommand}" />
+        <ToolbarItem Text="Logout" Clicked="OnLogoutClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="30" VerticalOptions="Center">
+            <Label Text="🎉 Welcome to FairSplit!"
+                   FontSize="26"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" />
+
+            <Label Text="{Binding Email}"
+                   FontSize="16"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <Button Text="➕ Create Event"
+                    Command="{Binding CreateEventCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10" />
+
+            <Button Text="👥 Add Participants"
+                    Command="{Binding AddParticipantsCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10" />
+
+            <Button Text="📊 Split Summary"
+                    Command="{Binding ViewSummaryCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    CornerRadius="10" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

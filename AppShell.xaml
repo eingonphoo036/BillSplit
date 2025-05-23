@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BillSplit.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:BillSplit.Views"
+    Title="BillSplit">
+
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="RegisterPage" ContentTemplate="{DataTemplate views:RegisterPage}" />
+    <ShellContent Route="HomePage" ContentTemplate="{DataTemplate views:HomePage}" />
+    <ShellContent Route="CreateEventPage" ContentTemplate="{DataTemplate views:CreateEventPage}" />
+    <ShellContent Route="AddParticipantsPage" ContentTemplate="{DataTemplate views:AddParticipantsPage}" />
+    <ShellContent Route="SplitSummaryPage" ContentTemplate="{DataTemplate views:SplitSummaryPage}" />
+    <ShellContent Route="ProfilePage" ContentTemplate="{DataTemplate views:ProfilePage}" />
+    <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate views:SettingsPage}" />
+
+</Shell>

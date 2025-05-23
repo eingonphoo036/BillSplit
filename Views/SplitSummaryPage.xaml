@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             xmlns:model="clr-namespace:BillSplit.Models"
+             x:Class="BillSplit.Views.SplitSummaryPage"
+             x:DataType="vm:SummaryViewModel"
+             x:Name="SummaryPage"
+             Title="Summary"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Participant Template -->
+            <DataTemplate x:Key="ParticipantTemplate" x:DataType="model:Participant">
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="Small" />
+                    <Label Grid.Column="1" Text="{Binding AmountDue, StringFormat='Owes: {0:C}'}" FontSize="Small" />
+                    <Label Grid.Column="2" Text="{Binding HasPaid, Converter={StaticResource BooleanToTextConverter}}" FontSize="Small" />
+                </Grid>
+            </DataTemplate>
+
+            <!-- Event Template -->
+            <DataTemplate x:Key="EventTemplate" x:DataType="model:Event">
+                <!-- Change to model:Event -->
+                <Border StrokeShape="RoundRectangle 10" BackgroundColor="#F0F0F0" Padding="15" Margin="5">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" />
+                        <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding TotalCost, StringFormat='Total: {0:C}'}" />
+                        <CollectionView ItemsSource="{Binding Participants}" ItemTemplate="{StaticResource ParticipantTemplate}" />
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <!-- Event list -->
+            <CollectionView ItemsSource="{Binding Events}" ItemTemplate="{StaticResource EventTemplate}" />
+
+            <!-- New delete by name input -->
+            <Entry Placeholder="Enter event name to delete"
+       Text="{Binding EventNameToDelete}"
+       Margin="10,20,10,5" />
+
+            <Button Text="Delete Event by Name"
+        Command="{Binding DeleteEventByNameCommand}"
+        BackgroundColor="Red"
+        TextColor="White"
+        CornerRadius="10"
+        HeightRequest="45"
+        Margin="10,0,10,20" />
+
+
+            <Button Text="🏠 Back to Home"
+                    Command="{Binding NavigateHomeCommand}"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="45" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

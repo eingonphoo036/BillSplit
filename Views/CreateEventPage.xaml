@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillSplit.Views.CreateEventPage"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             x:DataType="vm:EventViewModel"
+             Title="Create Event">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+            <Label Text="Create New Event" FontSize="24" FontAttributes="Bold" />
+
+            <!-- Entry for entering the event name -->
+            <Entry Placeholder="Event Name" Text="{Binding EventName}" />
+
+            <!-- Entry for entering the total cost -->
+            <Entry Placeholder="Total Cost" Keyboard="Numeric" Text="{Binding TotalCostText}" />
+
+
+            <!-- Entry for entering the number of participants -->
+            <Entry Placeholder="Number of Participants" Keyboard="Numeric" Text="{Binding ParticipantCount}" />
+            
+
+            <!-- A simple list to input participant emails -->
+            <Label Text="Participants' Emails (comma-separated)" />
+            <Entry Placeholder="Email1,Email2,..." Text="{Binding ParticipantsText}" />
+            <Entry Placeholder="Who Paid (Email)" Text="{Binding PayerEmail}" />
+
+            <!-- Button to trigger saving the event -->
+            <Button Text="Save Event" 
+        Command="{Binding SaveEventCommand}" 
+        BackgroundColor="Green" 
+        TextColor="White" 
+        CornerRadius="10" 
+        HeightRequest="45" 
+        Margin="10,0,10,20" />
+
+
+            <!-- Button to navigate back to the home page -->
+            <Button Text="🏠 Back to Home" Command="{Binding NavigateHomeCommand}" BackgroundColor="Black" TextColor="White" CornerRadius="10" HeightRequest="45" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

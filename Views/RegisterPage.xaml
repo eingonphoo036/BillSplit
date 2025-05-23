@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillSplit.Views.RegisterPage"
+             xmlns:vm="clr-namespace:BillSplit.ViewModels"
+             x:DataType="vm:RegisterViewModel"
+             BackgroundColor="White"
+             Title="Register">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20">
+
+            <Image Source="logo.png"
+                   WidthRequest="180"
+                   HeightRequest="180"
+                   HorizontalOptions="Center"
+                   Margin="0,50,0,20" />
+
+            <Label Text="Create Account"
+                   FontSize="22"
+                   HorizontalOptions="Center"
+                   TextColor="Black"
+                   FontAttributes="Bold" />
+
+            <Entry Placeholder="Username"
+                   Text="{Binding Username}"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   BackgroundColor="#F2F2F2"
+                   HeightRequest="45"/>
+
+            <Entry Placeholder="Email"
+                   Text="{Binding Email}"
+                   Keyboard="Email"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   BackgroundColor="#F2F2F2"
+                   HeightRequest="45" />
+
+            <Entry Placeholder="Password"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   BackgroundColor="#F2F2F2"
+                   HeightRequest="45" />
+
+            <Button Text="Register"
+                    Command="{Binding RegisterCommand}"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    CornerRadius="12" />
+
+            <Label Text="Already have an account?"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <Button Text="Back to Login"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    Clicked="OnLoginClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
